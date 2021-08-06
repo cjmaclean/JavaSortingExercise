@@ -33,11 +33,31 @@ public class JavaSortingExercise {
     public static Integer[] initialiseSalaries() {
         int numSalaries = 10;
         Integer[] salaries = new Integer[numSalaries];
-        int maxSalary = 10000000;
+        
+        
+        //int maxSalary = 10000000;
+
+
+        // Smaller value is easier to read during development
+        int maxSalary = 100;
         for (int i = 0; i < numSalaries; i++) {
             salaries[i] = 1 + (int) (Math.random() * maxSalary);
         }
         return salaries;
+    }
+
+    public static void selectionSort(Integer[] list, Comparator<Integer> comparator) {
+        for (int locationForSmallest = 0; locationForSmallest < list.length - 1;
+                locationForSmallest++) {
+            for (int i = locationForSmallest + 1; i < list.length; i++) {
+                if (comparator.compare(list[i], list[locationForSmallest]) < 0) {
+                    // item at i should come first, swap it into locationForSmallest
+                    Integer temp = list[i];
+                    list[locationForSmallest] = temp;
+                    list[i]=temp;
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -53,20 +73,24 @@ public class JavaSortingExercise {
         Integer[] salaries3 = salariesUnsorted.clone();
 
         Arrays.sort(salaries1, comparator);
+        selectionSort(salaries2, comparator);
+
         
         System.out.println("Initial numbers");
         for (int i : salariesUnsorted) {
-          System.out.print(i + " ");  
+            System.out.print(i + " ");
         }
         System.out.println("");
 
         System.out.println("Make sure these are sorted");
         for (int i : salaries1) {
-          System.out.print(i + " ");  
+            System.out.print(i + " ");
         }
         System.out.println("");
-
-        
+        for (int i : salaries2) {
+            System.out.print(i + " ");
+        }
+        System.out.println("");
 
     }
 
