@@ -44,13 +44,12 @@ public class JavaSortingExercise {
     }
 
     public static void swap(Integer[] list, int firstIndex, int secondIndex) {
-                    Integer temp = list[firstIndex];
-                    list[firstIndex] = list[secondIndex];
-                    list[secondIndex] = temp;
-        
+        Integer temp = list[firstIndex];
+        list[firstIndex] = list[secondIndex];
+        list[secondIndex] = temp;
+
     }
-    
-    
+
     public static void selectionSort(Integer[] list, Comparator<Integer> comparator) {
         for (int locationForSmallest = 0; locationForSmallest < list.length - 1;
                 locationForSmallest++) {
@@ -61,6 +60,45 @@ public class JavaSortingExercise {
                 }
             }
         }
+    }
+
+    // quickSortRecursive and partition are based on pseudocode
+    // from https://www.geeksforgeeks.org/quick-sort/
+    
+    /* This function takes last element as pivot, places
+   the pivot element at its correct position in sorted
+    array, and places all smaller (smaller than pivot)
+   to left of pivot and all greater elements to right
+   of pivot */
+    // It returns the index of the pivot in its correct location.
+    public static int partition(Integer[] list, Comparator<Integer> comparator,
+            int firstIndex, int lastIndex) {
+        Integer pivotValue = list[lastIndex];
+        int i = firstIndex - 1;
+        for (int j = firstIndex; j <= lastIndex - 1; j++) {
+            if (comparator.compare(list[j], pivotValue) < 0) {
+                i++;
+                swap(list, i, j);
+            }
+        }
+        swap(list, i+1, lastIndex);
+        return i+1;
+    }
+    
+    public static void quickSortRecursive(Integer[] list, Comparator<Integer> comparator,
+            int firstIndex, int lastIndex) {
+        if (firstIndex < lastIndex) {
+            int partitionIndex = partition(list, comparator, firstIndex, lastIndex);
+            quickSortRecursive(list, comparator, firstIndex, partitionIndex - 1);
+            quickSortRecursive(list, comparator, partitionIndex + 1, lastIndex);
+        }
+    }
+
+    public static void quickSort(Integer[] list, Comparator<Integer> comparator) {
+        // Get the index for the first and last elements
+        int firstIndex = 0;
+        int lastIndex = list.length - 1;
+        quickSortRecursive(list, comparator, firstIndex, lastIndex);
     }
 
     public static void main(String[] args) {
@@ -77,6 +115,7 @@ public class JavaSortingExercise {
 
         Arrays.sort(salaries1, comparator);
         selectionSort(salaries2, comparator);
+        quickSort(salaries3, comparator);
 
         System.out.println("Initial numbers");
         for (int i : salariesUnsorted) {
@@ -90,6 +129,10 @@ public class JavaSortingExercise {
         }
         System.out.println("");
         for (int i : salaries2) {
+            System.out.print(i + " ");
+        }
+        System.out.println("");
+        for (int i : salaries3) {
             System.out.print(i + " ");
         }
         System.out.println("");
