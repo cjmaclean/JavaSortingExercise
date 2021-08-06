@@ -31,12 +31,14 @@ public class JavaSortingExercise {
     // static int[] salaries = new int[numSalaries];
     // Creates a list of integers between 1 and 10 million
     public static Integer[] initialiseSalaries() {
-        int numSalaries = 10;
+
+        int numSalaries = 20000;
+        //int numSalaries = 100000;
         Integer[] salaries = new Integer[numSalaries];
 
-        //int maxSalary = 10000000;
+        int maxSalary = 10000000;
         // Smaller value is easier to read during development
-        int maxSalary = 100;
+        //int maxSalary = 100;
         for (int i = 0; i < numSalaries; i++) {
             salaries[i] = 1 + (int) (Math.random() * maxSalary);
         }
@@ -116,6 +118,15 @@ public class JavaSortingExercise {
         long arraysSort, selectionSortTime, quickSortTime;
 
         for (int count = 0; count < 5; count++) {
+            // have unsorted lists for most of the tests.
+            if (count < 3) {
+                System.out.println("Randomising");
+
+                salaries1 = salariesUnsorted.clone();
+                salaries2 = salariesUnsorted.clone();
+                salaries3 = salariesUnsorted.clone();
+            }
+
             startTime = System.nanoTime();
             Arrays.sort(salaries1, comparator);
             arraysSort = System.nanoTime() - startTime;
@@ -131,27 +142,32 @@ public class JavaSortingExercise {
             System.out.println("Arrays.sort took: " + arraysSort);
             System.out.println("selectionSort took: " + selectionSortTime);
             System.out.println("quickSort took: " + quickSortTime);
+            System.out.println();
         }
-        
 
-        System.out.println("Initial numbers");
-        for (int i : salariesUnsorted) {
-            System.out.print(i + " ");
-        }
-        System.out.println("");
+        System.out.println("array lengths: " + salariesUnsorted.length);
 
-        System.out.println("Make sure these are sorted");
-        for (int i : salaries1) {
-            System.out.print(i + " ");
+        if (salariesUnsorted.length < 20) {
+            System.out.println("Initial numbers");
+            for (int i : salariesUnsorted) {
+                System.out.print(i + " ");
+            }
+            System.out.println("");
+
+            System.out.println("Make sure these are sorted");
+            for (int i : salaries1) {
+                System.out.print(i + " ");
+            }
+            System.out.println("");
+            for (int i : salaries2) {
+                System.out.print(i + " ");
+            }
+            System.out.println("");
+            for (int i : salaries3) {
+                System.out.print(i + " ");
+            }
+            System.out.println("");
+
         }
-        System.out.println("");
-        for (int i : salaries2) {
-            System.out.print(i + " ");
-        }
-        System.out.println("");
-        for (int i : salaries3) {
-            System.out.print(i + " ");
-        }
-        System.out.println("");
     }
 }
