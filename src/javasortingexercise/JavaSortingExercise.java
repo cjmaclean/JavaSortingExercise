@@ -43,15 +43,21 @@ public class JavaSortingExercise {
         return salaries;
     }
 
+    public static void swap(Integer[] list, int firstIndex, int secondIndex) {
+                    Integer temp = list[firstIndex];
+                    list[firstIndex] = list[secondIndex];
+                    list[secondIndex] = temp;
+        
+    }
+    
+    
     public static void selectionSort(Integer[] list, Comparator<Integer> comparator) {
         for (int locationForSmallest = 0; locationForSmallest < list.length - 1;
                 locationForSmallest++) {
             for (int i = locationForSmallest + 1; i < list.length; i++) {
                 if (comparator.compare(list[i], list[locationForSmallest]) < 0) {
                     // Item at i should come first, swap it into locationForSmallest
-                    Integer temp = list[i];
-                    list[i] = list[locationForSmallest];
-                    list[locationForSmallest] = temp;
+                    swap(list, i, locationForSmallest);
                 }
             }
         }
