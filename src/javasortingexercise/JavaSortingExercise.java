@@ -64,7 +64,6 @@ public class JavaSortingExercise {
 
     // quickSortRecursive and partition are based on pseudocode
     // from https://www.geeksforgeeks.org/quick-sort/
-    
     /* This function takes last element as pivot, places
    the pivot element at its correct position in sorted
     array, and places all smaller (smaller than pivot)
@@ -81,10 +80,10 @@ public class JavaSortingExercise {
                 swap(list, i, j);
             }
         }
-        swap(list, i+1, lastIndex);
-        return i+1;
+        swap(list, i + 1, lastIndex);
+        return i + 1;
     }
-    
+
     public static void quickSortRecursive(Integer[] list, Comparator<Integer> comparator,
             int firstIndex, int lastIndex) {
         if (firstIndex < lastIndex) {
@@ -101,9 +100,6 @@ public class JavaSortingExercise {
         quickSortRecursive(list, comparator, firstIndex, lastIndex);
     }
 
-    
-    
-    
     public static void main(String[] args) {
         System.out.println("Start");
 
@@ -119,23 +115,25 @@ public class JavaSortingExercise {
         long startTime;
         long arraysSort, selectionSortTime, quickSortTime;
 
-        startTime = System.nanoTime();
-        Arrays.sort(salaries1, comparator);
-        arraysSort = System.nanoTime() - startTime;
-        
-        startTime = System.nanoTime();        
-        selectionSort(salaries2, comparator);
-        selectionSortTime = System.nanoTime() - startTime;
+        for (int count = 0; count < 5; count++) {
+            startTime = System.nanoTime();
+            Arrays.sort(salaries1, comparator);
+            arraysSort = System.nanoTime() - startTime;
 
-        startTime = System.nanoTime();        
-        quickSort(salaries3, comparator);
-        quickSortTime = System.nanoTime() - startTime;
+            startTime = System.nanoTime();
+            selectionSort(salaries2, comparator);
+            selectionSortTime = System.nanoTime() - startTime;
+
+            startTime = System.nanoTime();
+            quickSort(salaries3, comparator);
+            quickSortTime = System.nanoTime() - startTime;
+
+            System.out.println("Arrays.sort took: " + arraysSort);
+            System.out.println("selectionSort took: " + selectionSortTime);
+            System.out.println("quickSort took: " + quickSortTime);
+        }
         
-        System.out.println("Arrays.sort took: " + arraysSort);
-        System.out.println("selectionSort took: " + selectionSortTime);
-        System.out.println("quickSort took: " + quickSortTime);
-        
-       
+
         System.out.println("Initial numbers");
         for (int i : salariesUnsorted) {
             System.out.print(i + " ");
