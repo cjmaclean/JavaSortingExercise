@@ -33,11 +33,8 @@ public class JavaSortingExercise {
     public static Integer[] initialiseSalaries() {
         int numSalaries = 10;
         Integer[] salaries = new Integer[numSalaries];
-        
-        
+
         //int maxSalary = 10000000;
-
-
         // Smaller value is easier to read during development
         int maxSalary = 100;
         for (int i = 0; i < numSalaries; i++) {
@@ -51,10 +48,10 @@ public class JavaSortingExercise {
                 locationForSmallest++) {
             for (int i = locationForSmallest + 1; i < list.length; i++) {
                 if (comparator.compare(list[i], list[locationForSmallest]) < 0) {
-                    // item at i should come first, swap it into locationForSmallest
+                    // Item at i should come first, swap it into locationForSmallest
                     Integer temp = list[i];
+                    list[i] = list[locationForSmallest];
                     list[locationForSmallest] = temp;
-                    list[i]=temp;
                 }
             }
         }
@@ -75,7 +72,6 @@ public class JavaSortingExercise {
         Arrays.sort(salaries1, comparator);
         selectionSort(salaries2, comparator);
 
-        
         System.out.println("Initial numbers");
         for (int i : salariesUnsorted) {
             System.out.print(i + " ");
