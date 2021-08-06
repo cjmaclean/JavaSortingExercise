@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javasortingexercise;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -32,26 +29,45 @@ public class JavaSortingExercise {
 
     // static private int numSalaries  = 10;
     // static int[] salaries = new int[numSalaries];
-
     // Creates a list of integers between 1 and 10 million
-    public static int[] initialiseSalaries() {
-        int numSalaries  = 10;
-        int[] salaries = new int[numSalaries];
+    public static Integer[] initialiseSalaries() {
+        int numSalaries = 10;
+        Integer[] salaries = new Integer[numSalaries];
         int maxSalary = 10000000;
-        for (int i=0;i<numSalaries; i++) {
-            salaries[i] = 1+(int)(Math.random()*maxSalary);
-        }  
+        for (int i = 0; i < numSalaries; i++) {
+            salaries[i] = 1 + (int) (Math.random() * maxSalary);
+        }
         return salaries;
     }
+
     public static void main(String[] args) {
+        System.out.println("Start");
+
+        Comparator<Integer> comparator = new AscendingIntegerComparator();
+
+        // Create 3 identical lists for testing the sort methods, and
+        // keep another copy unsorted.
+        Integer[] salariesUnsorted = initialiseSalaries();
+        Integer[] salaries1 = salariesUnsorted.clone();
+        Integer[] salaries2 = salariesUnsorted.clone();
+        Integer[] salaries3 = salariesUnsorted.clone();
+
+        Arrays.sort(salaries1, comparator);
         
-        // Create 3 identical lists for testing the sort methods.
-        int[] salaries1 = initialiseSalaries();
-        int[] salaries2 = salaries1.clone();
-        int[] salaries3 = salaries1.clone();
+        System.out.println("Initial numbers");
+        for (int i : salariesUnsorted) {
+          System.out.print(i + " ");  
+        }
+        System.out.println("");
+
+        System.out.println("Make sure these are sorted");
+        for (int i : salaries1) {
+          System.out.print(i + " ");  
+        }
+        System.out.println("");
+
         
-        
-        
+
     }
 
 }
