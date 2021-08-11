@@ -135,9 +135,15 @@ public class JavaSortingExercise {
             selectionSort(salaries2, comparator);
             selectionSortTime = System.nanoTime() - startTime;
 
+            
             startTime = System.nanoTime();
-            quickSort(salaries3, comparator);
-            quickSortTime = System.nanoTime() - startTime;
+            try {
+                quickSort(salaries3, comparator);
+                quickSortTime = System.nanoTime() - startTime;
+            } catch (StackOverflowError ex) {
+                quickSortTime = System.nanoTime() - startTime;
+                System.out.println("QuickSort couldn't complete due to stack overflow, time recorded is time to fail.");
+            }
 
             System.out.println("Arrays.sort took: " + arraysSort);
             System.out.println("selectionSort took: " + selectionSortTime);
