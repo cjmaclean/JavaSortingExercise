@@ -117,14 +117,18 @@ public class JavaSortingExercise {
         long startTime;
         long arraysSort, selectionSortTime, quickSortTime;
 
-        for (int count = 0; count < 5; count++) {
+        for (int count = 0; count < 12; count++) {
             // have unsorted lists for most of the tests.
-            if (count < 3) {
+            if (count < 8) {
                 System.out.println("Randomising");
+                
+                salariesUnsorted = initialiseSalaries();
 
                 salaries1 = salariesUnsorted.clone();
                 salaries2 = salariesUnsorted.clone();
                 salaries3 = salariesUnsorted.clone();
+            } else {
+                System.out.println("Re-using sorted lists");
             }
 
             startTime = System.nanoTime();
