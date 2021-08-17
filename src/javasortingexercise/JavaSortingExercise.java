@@ -32,7 +32,7 @@ public class JavaSortingExercise {
     // Creates a list of integers between 1 and 10 million
     public static Integer[] initialiseSalaries() {
 
-        int numSalaries = 20000;
+        int numSalaries = 100000;
         //int numSalaries = 100000;
         Integer[] salaries = new Integer[numSalaries];
 
