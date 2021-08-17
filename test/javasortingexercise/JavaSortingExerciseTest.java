@@ -11,7 +11,23 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author caspian
+ * @author Caspian Maclean 30039802
+ * 
+ * 17/8/2021
+ *
+ * Question 3 – You are required to make a list of different annual salaries for
+ * payroll in whole numbers (integers) that will then need to be sorted, you
+ * should have alternate methods of sorting so that payroll can decide on which
+ * method they would like to use. You need to create an application that creates
+ * lists of integers between 1 and 10 million. Your application must have the
+ * ability to sort in three different styles with timers to indicate the speed
+ * at which this happens you must have at least 100,000 items in your list as
+ * this the future business strategy to employ at least this many staff. The
+ * current system is only able to handle 12 staff. Only 1 sorting technique may
+ * use the inbuilt sorting the rest you must write yourself. In addition, you
+ * must list the advantages and disadvantages of each algorithm. Your sorting
+ * algorithm must have a comparator
+ *
  */
 public class JavaSortingExerciseTest {
 
@@ -78,7 +94,7 @@ public class JavaSortingExerciseTest {
         Integer[] list = {100, 61, 62, 63, 21, 22, 23, 50, 1};
 
         Comparator<Integer> comparator = new AscendingIntegerComparator();
-        
+
         // partition all except the first and last element.
         int firstIndex = 1;
         int lastIndex = 7;
@@ -86,10 +102,10 @@ public class JavaSortingExerciseTest {
         Integer[] expectedListResult = {100, 21, 22, 23, 50, 62, 63, 61, 1};
         // First and last elements are unmoved, others are partitioned around the 50,
         // exact order found by running the code.
-        
+
         int result = JavaSortingExercise.partition(list, comparator, firstIndex, lastIndex);
         assertArrayEquals(expectedListResult, list);
-        
+
         assertEquals(expReturnResult, result);
 
     }

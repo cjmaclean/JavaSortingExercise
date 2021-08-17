@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 /**
  *
- * @author author Caspian Maclean 30039802
+ * @author Caspian Maclean 30039802
  */
 public class AscendingIntegerComparator implements Comparator<Integer> {
 
